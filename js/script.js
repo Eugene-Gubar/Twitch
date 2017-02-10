@@ -39,4 +39,25 @@ $(document).ready(function() {
 	});
 
 
+	$('#all').on('click', function() {
+		$('.list-group>a').removeClass('hidden');
+	});
+	$('#online').on('click', function() {
+		$('.online').each(function() {
+			$(this).removeClass('hidden');
+		});
+		$('.offline').each(function() {
+			$(this).addClass('hidden');
+		});
+	});
+	$('#offline').on('click', function() {
+		$('.online').each(function() {
+			$(this).addClass('hidden');
+		});
+		$('.offline').each(function() {
+			$(this).removeClass('hidden');
+		});
+	});
+
+
 });
