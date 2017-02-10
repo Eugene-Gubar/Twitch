@@ -22,8 +22,9 @@ $(document).ready(function() {
 
 				$.getJSON(urlChannels, function(data) {
 
-					$('.list-group').append('<a style="background: url('+ data.profile_banner +') no-repeat top center;" href="'+ data.url +'" class="list-group-item '+ status +'"><img src="'+ data.logo +'" alt=""><span class="name"><strong>'+ data.name +'</strong></span><span class="status">'+ status +'</span><p class="description">'+ data.status +'</p></a>');
-
+					var bgImg = data.profile_banner ? data.profile_banner : 'https://tatica.fedorapeople.org/Themes/F12/wallpaper-mosaico6.svg';
+					var logoImg = data.logo ? data.logo : 'https://s3-us-west-2.amazonaws.com/web-design-ext-production/p/Combologo_474x356.png';
+					$('.list-group').append('<a style="background: url('+ bgImg +') no-repeat top center;" href="'+ data.url +'" class="list-group-item '+ status +'"><img src="'+ logoImg +'" alt=""><span class="name"><strong>'+ data.name +'</strong></span><span class="status"> '+ status +'</span><p class="description">'+ data.status +'</p></a>');
 
 				});
 				
@@ -33,7 +34,9 @@ $(document).ready(function() {
 
 
 
-	getTwitchJSON('ESL_SC2');
+	channels.forEach(function(element) {
+		getTwitchJSON(element);
+	});
 
 
 });
