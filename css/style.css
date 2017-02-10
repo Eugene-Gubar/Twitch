@@ -1,7 +1,9 @@
 body {
-	margin: 0px;
-	padding: 0px;
-	background-color: #9097A2;
+	
+	background: #348F50; /* fallback for old browsers */
+	background: -webkit-linear-gradient(to left, #348F50 , #56B4D3); /* Chrome 10-25, Safari 5.1-6 */
+	background: linear-gradient(to left, #348F50 , #56B4D3); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+        
 }
 a {
 	height: 132px;
@@ -12,4 +14,7 @@ img {
 	height: 109px;
     float: left;
     margin-right: 15px;
+}
+.padding-25 {
+	padding: 25px;
 }
