@@ -87,10 +87,20 @@ $(document).ready(function() {
 
 	};
 
+	var activeBtn = function() {
+
+		$('.btn-group>button').on('click', function(event) {
+			$('.btn-group>button').removeClass('active');
+			$(this).addClass('active');
+		});
+
+	};
+
 	channels.forEach(function(element) {
 		getTwitchJSON(element);
 	});
 
 	initBtn();
+	activeBtn();
 
 });
