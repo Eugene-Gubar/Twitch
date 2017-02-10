@@ -20,10 +20,10 @@ $(document).ready(function() {
 					status = "online";
 				}
 
-				$.getJSON(urlChannels, function(channels) {
+				$.getJSON(urlChannels, function(data) {
 
-					console.log(game, status);
-					console.log(channels);
+					$('.list-group').append('<a style="background: url('+ data.profile_banner +') no-repeat top center;" href="'+ data.url +'" class="list-group-item '+ status +'"><img src="'+ data.logo +'" alt=""><span class="name"><strong>'+ data.name +'</strong></span><span class="status">'+ status +'</span><p class="description">'+ data.status +'</p></a>');
+
 
 				});
 				

@@ -3,3 +3,12 @@ body {
 	padding: 0px;
 	background-color: #9097A2;
 }
+a {
+	height: 132px;
+	/*color: #fff;*/
+}
+img {
+	height: 109px;
+    float: left;
+    margin-right: 15px;
+}
