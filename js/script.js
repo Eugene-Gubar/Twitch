@@ -7,6 +7,7 @@ $(document).ready(function() {
 		var urlChannels = 'https://wind-bow.gomix.me/twitch-api/channels/' + name + '?callback=?';
 
 			$.getJSON(urlStreams, function(streams) {
+
 				var game, status;
 
 				if (streams.stream === null) {
@@ -22,9 +23,11 @@ $(document).ready(function() {
 
 				$.getJSON(urlChannels, function(data) {
 
-					var bgImg = data.profile_banner ? data.profile_banner : 'https://tatica.fedorapeople.org/Themes/F12/wallpaper-mosaico6.svg';
-					var logoImg = data.logo ? data.logo : 'https://s3-us-west-2.amazonaws.com/web-design-ext-production/p/Combologo_474x356.png';
-					$('.list-group').append('<a style="background: url('+ bgImg +') no-repeat top center;" href="'+ data.url +'" class="list-group-item '+ status +'"><img src="'+ logoImg +'" alt=""><span class="name"><strong>'+ data.name +'</strong></span><span class="status"> '+ status +'</span><p class="description">'+ data.status +'</p></a>');
+					if (data.error !== 'Not Found') {
+						var bgImg = data.profile_banner ? data.profile_banner : 'https://tatica.fedorapeople.org/Themes/F12/wallpaper-mosaico6.svg';
+						var logoImg = data.logo ? data.logo : 'https://s3-us-west-2.amazonaws.com/web-design-ext-production/p/Combologo_474x356.png';
+						$('.list-group').append('<a target="_blank" style="background: url('+ bgImg +') no-repeat top center;" href="'+ data.url +'" class="list-group-item '+ status +'"><img src="'+ logoImg +'" alt=""><span class="name"><strong>'+ data.name +'</strong></span><span class="status"> '+ status +'</span><p class="description">'+ data.status +'</p></a>');
+					}
 
 				});
 				
@@ -57,6 +60,22 @@ $(document).ready(function() {
 		$('.offline').each(function() {
 			$(this).removeClass('hidden');
 		});
+	});
+
+	
+	$("#btn-send").on('click', function() {
+
+		var value = $("#inp-search").val().replace(/\s/g, '');
+
+		if (value !== '') {
+			var channels = value.split(',');
+			console.log(channels);
+			channels.forEach(function(element) {
+				console.log(element);
+				getTwitchJSON(element);
+			});
+		}
+
 	});
 
 
